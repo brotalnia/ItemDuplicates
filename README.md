@@ -1,2 +1,2 @@
-# ItemDuplicates
-Finds duplicated item template entries.
+# Item Duplicates Finder
+Tool to find duplicates of item templates.
