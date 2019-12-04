@@ -41,7 +41,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ItemDuplicates.cpp">
+    <ClCompile Include="DuplicateFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Database\Database.cpp">
