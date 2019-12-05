@@ -12,6 +12,8 @@
 #include "Database\Database.h"
 #include "Defines\ItemTemplate.h"
 #include "Defines\SpellTemplate.h"
+#include "Defines\FactionEntry.h"
+#include "Defines\TaxiNodeEntry.h"
 
 Database GameDb;
 
@@ -223,6 +225,120 @@ void CheckItems()
 	}
 	myfile.close();
 }
+
+void CheckFactions()
+{
+	std::ofstream myfile("faction_duplicates.sql");
+	if (!myfile.is_open())
+		return;
+
+	std::set<FactionEntry> FactionsData;
+
+	printf("Loading faction database.\n");
+	//                                                              0     1        2                     3                      4                      5                      6                      7                       8                       9                       10                      11                 12                 13                 14                 15                   16                   17                   18                   19      20      21              
+	if (std::shared_ptr<QueryResult> result = GameDb.Query("SELECT `id`, `build`, `reputation_list_id`, `base_rep_race_mask1`, `base_rep_race_mask2`, `base_rep_race_mask3`, `base_rep_race_mask4`, `base_rep_class_mask1`, `base_rep_class_mask2`, `base_rep_class_mask3`, `base_rep_class_mask4`, `base_rep_value1`, `base_rep_value2`, `base_rep_value3`, `base_rep_value4`, `reputation_flags1`, `reputation_flags2`, `reputation_flags3`, `reputation_flags4`, `team`, `name`, `description` FROM `faction` ORDER BY `id`, `build`"))
+	{
+		do
+		{
+			DbField* pFields = result->fetchCurrentRow();
+
+			FactionEntry faction;
+
+			faction.id = pFields[0].getUInt32();
+			faction.build = pFields[1].getUInt32();
+			faction.reputation_list_id = pFields[2].getInt32();
+			faction.base_rep_race_mask[0] = pFields[3].getUInt32();
+			faction.base_rep_race_mask[1] = pFields[4].getUInt32();
+			faction.base_rep_race_mask[2] = pFields[5].getUInt32();
+			faction.base_rep_race_mask[3] = pFields[6].getUInt32();
+			faction.base_rep_class_mask[0] = pFields[7].getUInt32();
+			faction.base_rep_class_mask[1] = pFields[8].getUInt32();
+			faction.base_rep_class_mask[2] = pFields[9].getUInt32();
+			faction.base_rep_class_mask[3] = pFields[10].getUInt32();
+			faction.base_rep_value[0] = pFields[11].getInt32();
+			faction.base_rep_value[1] = pFields[12].getInt32();
+			faction.base_rep_value[2] = pFields[13].getInt32();
+			faction.base_rep_value[3] = pFields[14].getInt32();
+			faction.reputation_flags[0] = pFields[15].getUInt32();
+			faction.reputation_flags[1] = pFields[16].getUInt32();
+			faction.reputation_flags[2] = pFields[17].getUInt32();
+			faction.reputation_flags[3] = pFields[18].getUInt32();
+			faction.team = pFields[19].getUInt32();
+			faction.name = pFields[20].getCppString();
+			faction.description = pFields[21].getCppString();
+
+			FactionsData.insert(faction);
+		} while (result->NextRow());
+	}
+
+	printf("Loaded %u faction templates.\n", FactionsData.size());
+
+	for (auto it = FactionsData.begin(); it != FactionsData.end(); it++)
+	{
+		auto next_item = std::next(it, 1);
+
+		if (next_item == FactionsData.end())
+			break;
+
+		if ((*it) == (*next_item))
+		{
+			printf("Duplicate of entry %u for build %u.\n", next_item->id, next_item->build);
+			myfile << "DELETE FROM `faction` WHERE `id`=" << next_item->id << " && `build`=" << next_item->build << ";\n";
+		}
+	}
+	myfile.close();
+}
+
+void CheckTaxiNodes()
+{
+    std::ofstream myfile("taxi_node_duplicates.sql");
+    if (!myfile.is_open())
+        return;
+
+    std::set<TaxiNodeEntry> TaxiData;
+
+    printf("Loading taxi node database.\n");
+    //                                                              0     1        2         3    4    5    6       7                    8            
+    if (std::shared_ptr<QueryResult> result = GameDb.Query("SELECT `id`, `build`, `map_id`, `x`, `y`, `z`, `name`, `mount_creature_id1`, `mount_creature_id2` FROM `taxi_nodes` ORDER BY `id`, `build`"))
+    {
+        do
+        {
+            DbField* pFields = result->fetchCurrentRow();
+
+            TaxiNodeEntry node;
+
+            node.id = pFields[0].getUInt32();
+            node.build = pFields[1].getUInt32();
+            node.map_id = pFields[2].getUInt32();
+            node.x = pFields[3].getFloat();
+            node.y = pFields[4].getFloat();
+            node.z = pFields[5].getFloat();
+            node.name = pFields[6].getCppString();
+            node.mount_creature_id1 = pFields[7].getUInt32();
+            node.mount_creature_id2 = pFields[8].getUInt32();
+
+            TaxiData.insert(node);
+        } while (result->NextRow());
+    }
+
+    printf("Loaded %u taxi nodes.\n", TaxiData.size());
+
+    for (auto it = TaxiData.begin(); it != TaxiData.end(); it++)
+    {
+        auto next_item = std::next(it, 1);
+
+        if (next_item == TaxiData.end())
+            break;
+
+        if ((*it) == (*next_item))
+        {
+            printf("Duplicate of entry %u for build %u.\n", next_item->id, next_item->build);
+            myfile << "DELETE FROM `taxi_nodes` WHERE `id`=" << next_item->id << " && `build`=" << next_item->build << ";\n";
+        }
+    }
+    myfile.close();
+}
+
 
 void CheckSpells()
 {
@@ -445,6 +561,9 @@ int main()
 	printf("Select table to check for duplicates:\n");
 	printf("1. item_template\n");
 	printf("2. spell_template\n");
+    printf("3. faction\n");
+    printf("4. taxi_nodes\n");
+
 	char option = getchar();
 	switch (option)
 	{
@@ -454,6 +573,12 @@ int main()
 		case '2':
 			CheckSpells();
 			break;
+        case '3':
+            CheckFactions();
+            break;
+        case '4':
+            CheckTaxiNodes();
+            break;
 	}
 
     printf("Done.\n");

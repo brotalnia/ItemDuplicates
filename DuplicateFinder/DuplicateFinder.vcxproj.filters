@@ -40,6 +40,12 @@
     <ClInclude Include="Defines\SpellTemplate.h">
       <Filter>Defines</Filter>
     </ClInclude>
+    <ClInclude Include="Defines\FactionEntry.h">
+      <Filter>Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines\TaxiNodeEntry.h">
+      <Filter>Defines</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Database">

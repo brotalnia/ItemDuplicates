@@ -81,9 +81,11 @@
     <ClInclude Include="Database\QueryObjects.h" />
     <ClInclude Include="Database\QueryResult.h" />
     <ClInclude Include="Database\SafeQueue.h" />
+    <ClInclude Include="Defines\FactionEntry.h" />
     <ClInclude Include="Defines\ItemTemplate.h" />
     <ClInclude Include="Defines\Common.h" />
     <ClInclude Include="Defines\SpellTemplate.h" />
+    <ClInclude Include="Defines\TaxiNodeEntry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Database\Database.cpp" />
