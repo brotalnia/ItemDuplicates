@@ -588,6 +588,7 @@ void CheckGameobjectSpawns()
                 printf("Duplicate of guid %u found.\n", goSpawnData[i].guid);
                 myfile << "DELETE FROM `gameobject` WHERE `guid`=" << goSpawnData[j].guid << ";\n";
                 goSpawnData.erase(goSpawnData.begin() + j);
+				j--;
             }
         }
     }
