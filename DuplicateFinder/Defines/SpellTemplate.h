@@ -8,100 +8,100 @@
 
 struct SpellEntry
 {
-	uint32    entry = 0;
-	uint32    build = 0;
-	uint32    school = 0;
-	uint32    category = 0; 
-	uint32    castUI = 0;
-	uint32    dispel = 0; 
-	uint32    mechanic = 0; 
-	uint32    attributes = 0;
-	uint32    attributesEx = 0;
-	uint32    attributesEx2 = 0;
-	uint32    attributesEx3 = 0;
-	uint32    attributesEx4 = 0;
-	uint32    stances = 0;
-	uint32    stancesNot = 0;
-	uint32    targets = 0;
-	uint32    targetCreatureType = 0;
-	uint32    requiresSpellFocus = 0;
-	uint32    casterAuraState = 0;
-	uint32    targetAuraState = 0;
-	uint32    castingTimeIndex = 0;
-	uint32    recoveryTime = 0;
-	uint32    categoryRecoveryTime = 0;
-	uint32    interruptFlags = 0;
-	uint32    auraInterruptFlags = 0;
-	uint32    channelInterruptFlags = 0;
-	uint32    procFlags = 0;
-	uint32    procChance = 0;
-	uint32    procCharges = 0;
-	uint32    maxLevel = 0;
-	uint32    baseLevel = 0;
-	uint32    spellLevel = 0;
-	uint32    durationIndex = 0;
-	uint32    powerType = 0;
-	uint32    manaCost = 0;
-	uint32    manaCostPerlevel = 0;
-	uint32    manaPerSecond = 0;
-	uint32    manaPerSecondPerLevel = 0;
-	uint32    rangeIndex = 1;
-	float     speed = 0.f;
-	uint32    modalNextSpell = 0;
-	uint32    stackAmount = 0;
-	std::array<uint32, MAX_SPELL_TOTEMS> totem = {};
-	std::array<int32, MAX_SPELL_REAGENTS> reagent = {};
-	std::array<uint32, MAX_SPELL_REAGENTS> reagentCount = {};
-	int32     equippedItemClass = -1;
-	int32     equippedItemSubClassMask = 0;
-	int32     equippedItemInventoryTypeMask = 0;
-	std::array<uint32, MAX_EFFECT_INDEX> effect = {};
-	std::array<int32, MAX_EFFECT_INDEX> effectDieSides = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectBaseDice = {};
-	std::array<float, MAX_EFFECT_INDEX> effectDicePerLevel = {};
-	std::array<float, MAX_EFFECT_INDEX> effectRealPointsPerLevel = {};
-	std::array<int32, MAX_EFFECT_INDEX> effectBasePoints = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectMechanic = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectImplicitTargetA = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectImplicitTargetB = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectRadiusIndex = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectApplyAuraName = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectAmplitude = {};
-	std::array<float, MAX_EFFECT_INDEX> effectMultipleValue = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectChainTarget = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectItemType = {};
-	std::array<int32, MAX_EFFECT_INDEX> effectMiscValue = {};
-	std::array<uint32, MAX_EFFECT_INDEX> effectTriggerSpell = {};
-	std::array<float, MAX_EFFECT_INDEX> effectPointsPerComboPoint = {};
-	uint32    spellVisual = 0;
-	uint32    spellVisual2 = 0;
-	uint32    spellIconId = 0;
-	uint32    activeIconID = 0;
-	uint32    spellPriority = 0;
-	std::string name;
-	uint32    nameFlags = 0;
-	std::string nameSubtext;
-	uint32    nameSubtextFlags = 0;
-	std::string     description;
-	uint32    descriptionFlags = 0;
-	std::string     auraDescription;
-	uint32    auraDescriptionFlags = 0;
-	uint32    manaCostPercentage = 0;
-	uint32    startRecoveryCategory = 0;
-	uint32    startRecoveryTime = 0;
-	uint32    minTargetLevel = 0;
-	uint32    maxTargetLevel = 0;
-	uint32    spellFamilyName = 0;
-	uint64    spellFamilyFlags = 0;
-	uint32    maxAffectedTargets = 0;
-	uint32    dmgClass = 0;
-	uint32    preventionType = 0;
-	int32     stanceBarOrder = 0;
-	std::array<float, MAX_EFFECT_INDEX> dmgMultiplier = {};
-	uint32    minFactionId = 0;
-	uint32    minReputation = 0;
-	uint32    requiredAuraVision = 0;
-	uint32    customFlags = 0;
+    uint32    entry = 0;
+    uint32    build = 0;
+    uint32    school = 0;
+    uint32    category = 0; 
+    uint32    castUI = 0;
+    uint32    dispel = 0; 
+    uint32    mechanic = 0; 
+    uint32    attributes = 0;
+    uint32    attributesEx = 0;
+    uint32    attributesEx2 = 0;
+    uint32    attributesEx3 = 0;
+    uint32    attributesEx4 = 0;
+    uint32    stances = 0;
+    uint32    stancesNot = 0;
+    uint32    targets = 0;
+    uint32    targetCreatureType = 0;
+    uint32    requiresSpellFocus = 0;
+    uint32    casterAuraState = 0;
+    uint32    targetAuraState = 0;
+    uint32    castingTimeIndex = 0;
+    uint32    recoveryTime = 0;
+    uint32    categoryRecoveryTime = 0;
+    uint32    interruptFlags = 0;
+    uint32    auraInterruptFlags = 0;
+    uint32    channelInterruptFlags = 0;
+    uint32    procFlags = 0;
+    uint32    procChance = 0;
+    uint32    procCharges = 0;
+    uint32    maxLevel = 0;
+    uint32    baseLevel = 0;
+    uint32    spellLevel = 0;
+    uint32    durationIndex = 0;
+    uint32    powerType = 0;
+    uint32    manaCost = 0;
+    uint32    manaCostPerlevel = 0;
+    uint32    manaPerSecond = 0;
+    uint32    manaPerSecondPerLevel = 0;
+    uint32    rangeIndex = 1;
+    float     speed = 0.f;
+    uint32    modalNextSpell = 0;
+    uint32    stackAmount = 0;
+    std::array<uint32, MAX_SPELL_TOTEMS> totem = {};
+    std::array<int32, MAX_SPELL_REAGENTS> reagent = {};
+    std::array<uint32, MAX_SPELL_REAGENTS> reagentCount = {};
+    int32     equippedItemClass = -1;
+    int32     equippedItemSubClassMask = 0;
+    int32     equippedItemInventoryTypeMask = 0;
+    std::array<uint32, MAX_EFFECT_INDEX> effect = {};
+    std::array<int32, MAX_EFFECT_INDEX> effectDieSides = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectBaseDice = {};
+    std::array<float, MAX_EFFECT_INDEX> effectDicePerLevel = {};
+    std::array<float, MAX_EFFECT_INDEX> effectRealPointsPerLevel = {};
+    std::array<int32, MAX_EFFECT_INDEX> effectBasePoints = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectMechanic = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectImplicitTargetA = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectImplicitTargetB = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectRadiusIndex = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectApplyAuraName = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectAmplitude = {};
+    std::array<float, MAX_EFFECT_INDEX> effectMultipleValue = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectChainTarget = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectItemType = {};
+    std::array<int32, MAX_EFFECT_INDEX> effectMiscValue = {};
+    std::array<uint32, MAX_EFFECT_INDEX> effectTriggerSpell = {};
+    std::array<float, MAX_EFFECT_INDEX> effectPointsPerComboPoint = {};
+    uint32    spellVisual = 0;
+    uint32    spellVisual2 = 0;
+    uint32    spellIconId = 0;
+    uint32    activeIconID = 0;
+    uint32    spellPriority = 0;
+    std::string name;
+    uint32    nameFlags = 0;
+    std::string nameSubtext;
+    uint32    nameSubtextFlags = 0;
+    std::string     description;
+    uint32    descriptionFlags = 0;
+    std::string     auraDescription;
+    uint32    auraDescriptionFlags = 0;
+    uint32    manaCostPercentage = 0;
+    uint32    startRecoveryCategory = 0;
+    uint32    startRecoveryTime = 0;
+    uint32    minTargetLevel = 0;
+    uint32    maxTargetLevel = 0;
+    uint32    spellFamilyName = 0;
+    uint64    spellFamilyFlags = 0;
+    uint32    maxAffectedTargets = 0;
+    uint32    dmgClass = 0;
+    uint32    preventionType = 0;
+    int32     stanceBarOrder = 0;
+    std::array<float, MAX_EFFECT_INDEX> dmgMultiplier = {};
+    uint32    minFactionId = 0;
+    uint32    minReputation = 0;
+    uint32    requiredAuraVision = 0;
+    uint32    customFlags = 0;
 
     void compare(const SpellEntry& val) const
     {
@@ -293,108 +293,108 @@ struct SpellEntry
             printf("customFlags \n");
     }
 
-	bool operator==(const SpellEntry& val) const
-	{
-		return (entry == val.entry) &&
-			(school == val.school) &&
-			(category == val.category) &&
-			(castUI == val.castUI) &&
-			(dispel == val.dispel) &&
-			(mechanic == val.mechanic) &&
-			(attributes == val.attributes) &&
-			(attributesEx == val.attributesEx) &&
-			(attributesEx2 == val.attributesEx2) &&
-			(attributesEx3 == val.attributesEx3) &&
-			(attributesEx4 == val.attributesEx4) &&
-			(stances == val.stances) &&
-			(stancesNot == val.stancesNot) &&
-			(targets == val.targets) &&
-			(targetCreatureType == val.targetCreatureType) &&
-			(requiresSpellFocus == val.requiresSpellFocus) &&
-			(casterAuraState == val.casterAuraState) &&
-			(targetAuraState == val.targetAuraState) &&
-			(castingTimeIndex == val.castingTimeIndex) &&
-			(recoveryTime == val.recoveryTime) &&
-			(categoryRecoveryTime == val.categoryRecoveryTime) &&
-			(interruptFlags == val.interruptFlags) &&
-			(auraInterruptFlags == val.auraInterruptFlags) &&
-			(channelInterruptFlags == val.channelInterruptFlags) &&
-			(procFlags == val.procFlags) &&
-			(procChance == val.procChance) &&
-			(procCharges == val.procCharges) &&
-			(maxLevel == val.maxLevel) &&
-			(baseLevel == val.baseLevel) &&
-			(spellLevel == val.spellLevel) &&
-			(durationIndex == val.durationIndex) &&
-			(powerType == val.powerType) &&
-			(manaCost == val.manaCost) &&
-			(manaCostPerlevel == val.manaCostPerlevel) &&
-			(manaPerSecond == val.manaPerSecond) &&
-			(manaPerSecondPerLevel == val.manaPerSecondPerLevel) &&
-			(rangeIndex == val.rangeIndex) &&
-			(speed == val.speed) &&
-			(modalNextSpell == val.modalNextSpell) &&
-			(stackAmount == val.stackAmount) &&
-			(totem == val.totem) &&
-			(reagent == val.reagent) &&
-			(reagentCount == val.reagentCount) &&
-			(equippedItemClass == val.equippedItemClass) &&
-			(equippedItemSubClassMask == val.equippedItemSubClassMask) &&
-			(equippedItemInventoryTypeMask == val.equippedItemInventoryTypeMask) &&
-			(effect == val.effect) &&
-			(effectDieSides == val.effectDieSides) &&
-			(effectBaseDice == val.effectBaseDice) &&
-			(effectDicePerLevel == val.effectDicePerLevel) &&
-			(effectRealPointsPerLevel == val.effectRealPointsPerLevel) &&
-			(effectBasePoints == val.effectBasePoints) &&
-			(effectMechanic == val.effectMechanic) &&
-			(effectImplicitTargetA == val.effectImplicitTargetA) &&
-			(effectImplicitTargetB == val.effectImplicitTargetB) &&
-			(effectRadiusIndex == val.effectRadiusIndex) &&
-			(effectApplyAuraName == val.effectApplyAuraName) &&
-			(effectAmplitude == val.effectAmplitude) &&
-			(effectMultipleValue == val.effectMultipleValue) &&
-			(effectChainTarget == val.effectChainTarget) &&
-			(effectItemType == val.effectItemType) &&
-			(effectMiscValue == val.effectMiscValue) &&
-			(effectTriggerSpell == val.effectTriggerSpell) &&
-			(effectPointsPerComboPoint == val.effectPointsPerComboPoint) &&
-			(spellVisual == val.spellVisual) &&
-			(spellVisual2 == val.spellVisual2) &&
-			(spellIconId == val.spellIconId) &&
-			(activeIconID == val.activeIconID) &&
-			(spellPriority == val.spellPriority) &&
-			(name == val.name) &&
-			//(nameFlags == val.nameFlags) &&
-			(nameSubtext == val.nameSubtext) &&
-			//(nameSubtextFlags == val.nameSubtextFlags) &&
-			(description == val.description) &&
-			//(descriptionFlags == val.descriptionFlags) &&
-			(auraDescription == val.auraDescription) &&
-			//(auraDescriptionFlags == val.auraDescriptionFlags) &&
-			(manaCostPercentage == val.manaCostPercentage) &&
-			(startRecoveryCategory == val.startRecoveryCategory) &&
-			(startRecoveryTime == val.startRecoveryTime) &&
-			(minTargetLevel == val.minTargetLevel) &&
-			(maxTargetLevel == val.maxTargetLevel) &&
-			(spellFamilyName == val.spellFamilyName) &&
-			(spellFamilyFlags == val.spellFamilyFlags) &&
-			(maxAffectedTargets == val.maxAffectedTargets) &&
-			(dmgClass == val.dmgClass) &&
-			(preventionType == val.preventionType) &&
-			(stanceBarOrder == val.stanceBarOrder) &&
-			(dmgMultiplier == val.dmgMultiplier) &&
-			(minFactionId == val.minFactionId) &&
-			(minReputation == val.minReputation) &&
-			(requiredAuraVision == val.requiredAuraVision) &&
-			(customFlags == val.customFlags);
-	}
-	
-	bool operator<(const SpellEntry& val) const
-	{
-		if (entry == val.entry)
-			return build < val.build;
+    bool operator==(const SpellEntry& val) const
+    {
+        return (entry == val.entry) &&
+            (school == val.school) &&
+            (category == val.category) &&
+            (castUI == val.castUI) &&
+            (dispel == val.dispel) &&
+            (mechanic == val.mechanic) &&
+            (attributes == val.attributes) &&
+            (attributesEx == val.attributesEx) &&
+            (attributesEx2 == val.attributesEx2) &&
+            (attributesEx3 == val.attributesEx3) &&
+            (attributesEx4 == val.attributesEx4) &&
+            (stances == val.stances) &&
+            (stancesNot == val.stancesNot) &&
+            (targets == val.targets) &&
+            (targetCreatureType == val.targetCreatureType) &&
+            (requiresSpellFocus == val.requiresSpellFocus) &&
+            (casterAuraState == val.casterAuraState) &&
+            (targetAuraState == val.targetAuraState) &&
+            (castingTimeIndex == val.castingTimeIndex) &&
+            (recoveryTime == val.recoveryTime) &&
+            (categoryRecoveryTime == val.categoryRecoveryTime) &&
+            (interruptFlags == val.interruptFlags) &&
+            (auraInterruptFlags == val.auraInterruptFlags) &&
+            (channelInterruptFlags == val.channelInterruptFlags) &&
+            (procFlags == val.procFlags) &&
+            (procChance == val.procChance) &&
+            (procCharges == val.procCharges) &&
+            (maxLevel == val.maxLevel) &&
+            (baseLevel == val.baseLevel) &&
+            (spellLevel == val.spellLevel) &&
+            (durationIndex == val.durationIndex) &&
+            (powerType == val.powerType) &&
+            (manaCost == val.manaCost) &&
+            (manaCostPerlevel == val.manaCostPerlevel) &&
+            (manaPerSecond == val.manaPerSecond) &&
+            (manaPerSecondPerLevel == val.manaPerSecondPerLevel) &&
+            (rangeIndex == val.rangeIndex) &&
+            (speed == val.speed) &&
+            (modalNextSpell == val.modalNextSpell) &&
+            (stackAmount == val.stackAmount) &&
+            (totem == val.totem) &&
+            (reagent == val.reagent) &&
+            (reagentCount == val.reagentCount) &&
+            (equippedItemClass == val.equippedItemClass) &&
+            (equippedItemSubClassMask == val.equippedItemSubClassMask) &&
+            (equippedItemInventoryTypeMask == val.equippedItemInventoryTypeMask) &&
+            (effect == val.effect) &&
+            (effectDieSides == val.effectDieSides) &&
+            (effectBaseDice == val.effectBaseDice) &&
+            (effectDicePerLevel == val.effectDicePerLevel) &&
+            (effectRealPointsPerLevel == val.effectRealPointsPerLevel) &&
+            (effectBasePoints == val.effectBasePoints) &&
+            (effectMechanic == val.effectMechanic) &&
+            (effectImplicitTargetA == val.effectImplicitTargetA) &&
+            (effectImplicitTargetB == val.effectImplicitTargetB) &&
+            (effectRadiusIndex == val.effectRadiusIndex) &&
+            (effectApplyAuraName == val.effectApplyAuraName) &&
+            (effectAmplitude == val.effectAmplitude) &&
+            (effectMultipleValue == val.effectMultipleValue) &&
+            (effectChainTarget == val.effectChainTarget) &&
+            (effectItemType == val.effectItemType) &&
+            (effectMiscValue == val.effectMiscValue) &&
+            (effectTriggerSpell == val.effectTriggerSpell) &&
+            (effectPointsPerComboPoint == val.effectPointsPerComboPoint) &&
+            (spellVisual == val.spellVisual) &&
+            (spellVisual2 == val.spellVisual2) &&
+            (spellIconId == val.spellIconId) &&
+            (activeIconID == val.activeIconID) &&
+            (spellPriority == val.spellPriority) &&
+            (name == val.name) &&
+            //(nameFlags == val.nameFlags) &&
+            (nameSubtext == val.nameSubtext) &&
+            //(nameSubtextFlags == val.nameSubtextFlags) &&
+            (description == val.description) &&
+            //(descriptionFlags == val.descriptionFlags) &&
+            (auraDescription == val.auraDescription) &&
+            //(auraDescriptionFlags == val.auraDescriptionFlags) &&
+            (manaCostPercentage == val.manaCostPercentage) &&
+            (startRecoveryCategory == val.startRecoveryCategory) &&
+            (startRecoveryTime == val.startRecoveryTime) &&
+            (minTargetLevel == val.minTargetLevel) &&
+            (maxTargetLevel == val.maxTargetLevel) &&
+            (spellFamilyName == val.spellFamilyName) &&
+            (spellFamilyFlags == val.spellFamilyFlags) &&
+            (maxAffectedTargets == val.maxAffectedTargets) &&
+            (dmgClass == val.dmgClass) &&
+            (preventionType == val.preventionType) &&
+            (stanceBarOrder == val.stanceBarOrder) &&
+            (dmgMultiplier == val.dmgMultiplier) &&
+            (minFactionId == val.minFactionId) &&
+            (minReputation == val.minReputation) &&
+            (requiredAuraVision == val.requiredAuraVision) &&
+            (customFlags == val.customFlags);
+    }
+    
+    bool operator<(const SpellEntry& val) const
+    {
+        if (entry == val.entry)
+            return build < val.build;
 
-		return entry < val.entry;
-	}
+        return entry < val.entry;
+    }
 };
