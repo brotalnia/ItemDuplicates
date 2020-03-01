@@ -82,6 +82,7 @@
     <ClInclude Include="Database\QueryResult.h" />
     <ClInclude Include="Database\SafeQueue.h" />
     <ClInclude Include="Defines\FactionEntry.h" />
+    <ClInclude Include="Defines\GameObjectSpawn.h" />
     <ClInclude Include="Defines\ItemTemplate.h" />
     <ClInclude Include="Defines\Common.h" />
     <ClInclude Include="Defines\SpellTemplate.h" />

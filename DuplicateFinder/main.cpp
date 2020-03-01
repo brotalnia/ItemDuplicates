@@ -14,6 +14,7 @@
 #include "Defines\SpellTemplate.h"
 #include "Defines\FactionEntry.h"
 #include "Defines\TaxiNodeEntry.h"
+#include "Defines\GameObjectSpawn.h"
 
 Database GameDb;
 
@@ -53,17 +54,13 @@ std::string MakeConnectionString()
     return mysql_host + ";" + mysql_port + ";" + mysql_user + ";" + mysql_pass + ";" + mysql_db;
 }
 
-bool IsNumber(const std::string &s) {
-    return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
-}
-
 void CheckItems()
 {
 	std::ofstream myfile("item_duplicates.sql");
 	if (!myfile.is_open())
 		return;
 
-	std::set<ItemTemplate> ItemsData;
+	std::set<ItemTemplate> itemsData;
 
 	printf("Loading item database.\n");
 	//                                                              0        1        2        3           4       5              6             7          8        9            10           11            12                13                 14                15            16                17                18                     19                20                     21                    22                             23                          24           25           26                 27            28             29            30            31             32            33             34            35             36           37              38             39            40             41            42             43            44             45            46               47       48           49           50          51          52           53          54          55           56          57          58           59          60          61           62          63          64           65       66       67          68          69            70           71            72            73           74                75                76                77                 78                 79                         80           81                82                83                84                 85                 86                         87           88                89                90                91                 92                 93                         94           95                96                97                98                 99                 100                        101          102               103               104               105                106                107                        108        109          110              111              112            113        114         115       116                117       118               119           120          121         122           123              124          125               126               127               
@@ -204,17 +201,17 @@ void CheckItems()
 			item.MaxMoneyLoot = pFields[126].getUInt32();
 			item.ExtraFlags = pFields[127].getUInt32();
 
-			ItemsData.insert(item);
+			itemsData.insert(item);
 		} while (result->NextRow());
 	}
 
-	printf("Loaded %u item templates.\n", ItemsData.size());
+	printf("Loaded %u item templates.\n", itemsData.size());
 
-	for (auto it = ItemsData.begin(); it != ItemsData.end(); it++)
+	for (auto it = itemsData.begin(); it != itemsData.end(); it++)
 	{
 		auto next_item = std::next(it, 1);
 
-		if (next_item == ItemsData.end())
+		if (next_item == itemsData.end())
 			break;
 
 		if ((*it) == (*next_item))
@@ -232,7 +229,7 @@ void CheckFactions()
 	if (!myfile.is_open())
 		return;
 
-	std::set<FactionEntry> FactionsData;
+	std::set<FactionEntry> factionsData;
 
 	printf("Loading faction database.\n");
 	//                                                              0     1        2                     3                      4                      5                      6                      7                       8                       9                       10                      11                 12                 13                 14                 15                   16                   17                   18                   19      20      21              
@@ -267,17 +264,17 @@ void CheckFactions()
 			faction.name = pFields[20].getCppString();
 			faction.description = pFields[21].getCppString();
 
-			FactionsData.insert(faction);
+			factionsData.insert(faction);
 		} while (result->NextRow());
 	}
 
-	printf("Loaded %u faction templates.\n", FactionsData.size());
+	printf("Loaded %u faction templates.\n", factionsData.size());
 
-	for (auto it = FactionsData.begin(); it != FactionsData.end(); it++)
+	for (auto it = factionsData.begin(); it != factionsData.end(); it++)
 	{
 		auto next_item = std::next(it, 1);
 
-		if (next_item == FactionsData.end())
+		if (next_item == factionsData.end())
 			break;
 
 		if ((*it) == (*next_item))
@@ -295,7 +292,7 @@ void CheckTaxiNodes()
     if (!myfile.is_open())
         return;
 
-    std::set<TaxiNodeEntry> TaxiData;
+    std::set<TaxiNodeEntry> taxiData;
 
     printf("Loading taxi node database.\n");
     //                                                              0     1        2         3    4    5    6       7                    8            
@@ -317,17 +314,17 @@ void CheckTaxiNodes()
             node.mount_creature_id1 = pFields[7].getUInt32();
             node.mount_creature_id2 = pFields[8].getUInt32();
 
-            TaxiData.insert(node);
+			taxiData.insert(node);
         } while (result->NextRow());
     }
 
-    printf("Loaded %u taxi nodes.\n", TaxiData.size());
+	printf("Loaded %u taxi nodes.\n", taxiData.size());
 
-    for (auto it = TaxiData.begin(); it != TaxiData.end(); it++)
+	for (auto it = taxiData.begin(); it != taxiData.end(); it++)
     {
         auto next_item = std::next(it, 1);
 
-        if (next_item == TaxiData.end())
+		if (next_item == taxiData.end())
             break;
 
         if ((*it) == (*next_item))
@@ -546,6 +543,59 @@ void CheckSpells()
 	myfile.close();
 }
 
+void CheckGameobjectSpawns()
+{
+	std::ofstream myfile("gameobject_spawn_duplicates.sql");
+	if (!myfile.is_open())
+		return;
+
+	std::vector<GameObjectSpawn> goSpawnData;
+    std::vector<GameObjectSpawn> goSpawnData2;
+
+	printf("Loading gameobject spawn database.\n");
+	//                                                              0       1     2      3             4             5             6              7            8            9            10
+	if (std::shared_ptr<QueryResult> result = GameDb.Query("SELECT `guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3` FROM `gameobject` ORDER BY `guid`"))
+	{
+		do
+		{
+			DbField* pFields = result->fetchCurrentRow();
+
+			GameObjectSpawn spawn;
+
+			spawn.guid = pFields[0].getUInt32();
+			spawn.id = pFields[1].getUInt32();
+			spawn.map = pFields[2].getUInt32();
+			spawn.position_x = pFields[3].getFloat();
+			spawn.position_y = pFields[4].getFloat();
+			spawn.position_z = pFields[5].getFloat();
+			spawn.orientation = pFields[6].getFloat();
+			spawn.rotation0 = pFields[7].getFloat();
+			spawn.rotation1 = pFields[8].getFloat();
+			spawn.rotation2 = pFields[9].getFloat();
+			spawn.rotation3 = pFields[10].getFloat();
+
+			goSpawnData.push_back(spawn);
+            goSpawnData2.push_back(spawn);
+		} while (result->NextRow());
+	}
+
+	printf("Loaded %u gameobject spawns.\n", goSpawnData.size());
+
+	for (uint32 i = 0; i < goSpawnData.size(); i++)
+	{
+        for (uint32 j = i + 1; j < goSpawnData.size(); j++)
+        {
+            if (goSpawnData[i] == goSpawnData[j])
+            {
+                printf("Duplicate of guid %u found.\n", goSpawnData[i].guid);
+                myfile << "DELETE FROM `gameobject` WHERE `guid`=" << goSpawnData[j].guid << ";\n";
+                goSpawnData.erase(goSpawnData.begin() + j);
+            }
+        }
+    }
+	myfile.close();
+}
+
 int main()
 {
     printf("\nEnter your database connection info.\n");
@@ -563,6 +613,7 @@ int main()
 	printf("2. spell_template\n");
     printf("3. faction\n");
     printf("4. taxi_nodes\n");
+    printf("5. gameobject\n");
 
 	char option = getchar();
 	switch (option)
@@ -578,6 +629,9 @@ int main()
             break;
         case '4':
             CheckTaxiNodes();
+            break;
+        case '5':
+            CheckGameobjectSpawns();
             break;
 	}
 

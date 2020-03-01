@@ -1,4 +1,5 @@
 #include "Common.h"
+#include <string>
 #include <array>
 
 #define MAX_ITEM_PROTO_DAMAGES 5

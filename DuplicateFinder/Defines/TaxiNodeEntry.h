@@ -1,6 +1,5 @@
 #include "Common.h"
 #include <string>
-#include <array>
 
 struct TaxiNodeEntry
 {

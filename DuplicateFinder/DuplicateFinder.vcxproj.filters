@@ -46,6 +46,9 @@
     <ClInclude Include="Defines\TaxiNodeEntry.h">
       <Filter>Defines</Filter>
     </ClInclude>
+    <ClInclude Include="Defines\GameObjectSpawn.h">
+      <Filter>Defines</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Database">
